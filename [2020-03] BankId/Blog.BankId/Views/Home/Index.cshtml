@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4">BankID on .NET Core using OpenID Connect</h1>
+    <p></p>
+    <br />
+    <br />
+    <iframe src="https://preprod.signicat.com/oidc/authorize?response_type=code&scope=openid+signicat.national_id&client_id=demo-preprod&redirect_uri=https://localhost:5000/redirect&state=123abc&acr_values=urn:signicat:oidc:method:nbid" height="550" width="650"></iframe>
+    <h1 id="bankIdResult"></h1>
+    <br /><br />
+    User: 11113306361, Signicat, Johnson, John<br />
+    One-time password: otp<br />
+    Password: qwer1234
+</div>
+
+@section Scripts
+{
+    <script>
+        window.document.addEventListener("bankIdResult", function (event) {
+            document.querySelector("iframe").style.display = "none";
+            document.getElementById("bankIdResult").innerHTML = event.detail;
+        });
+
+    </script>
+}

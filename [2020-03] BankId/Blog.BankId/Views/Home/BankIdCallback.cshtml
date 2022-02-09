@@ -1,0 +1,5 @@
+﻿@model string
+<script>
+    var event = new CustomEvent('bankIdResult', { detail: '@Model' });
+    window.parent.document.dispatchEvent(event);
+</script>

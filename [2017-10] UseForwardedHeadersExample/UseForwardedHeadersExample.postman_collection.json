@@ -1,0 +1,38 @@
+{
+	"variables": [],
+	"info": {
+		"name": "UseForwardedHeadersExample",
+		"_postman_id": "1523b6ff-7980-8b45-0a2f-9e6f5aced0e0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "X-Forwarded-*",
+			"request": {
+				"url": "http://localhost:2395/api",
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Forwarded-Proto",
+						"value": "http, https, https",
+						"description": ""
+					},
+					{
+						"key": "X-Forwarded-Host",
+						"value": "end-user.com, firstproxy.com, secondproxy.com",
+						"description": ""
+					},
+					{
+						"key": "X-Forwarded-For",
+						"value": "60.60.60.60, 70.70.70.70:1337, 80.80.80.80:1338",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

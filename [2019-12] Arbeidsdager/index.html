@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="no" ng-app="app" ng-controller="controller as vm">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arbeidsdager</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }        
+        .nav-tabs>li,.nav-pills>li {margin:12px;float:none;display:inline-block;*display:inline; /* ie7 fix */zoom:1; /* hasLayout ie7 trigger */}
+        .nav-tabs,.nav-pills{text-align:center;}
+        .pager li>a {min-width:40px;outline:none;}
+        .badge{padding:40px;font-size:48px;}
+        .logo{margin-left:28px;}
+        @media screen and (min-width: 480px) {.logo{position:relative;float:left;left:200px;margin-left:-200px;}}
+    </style>
+</head>
+<body>
+    <div class="container">      
+        <div class="row">            
+            <div class="jumbotron" style="margin-top:5px;text-align:center;">
+                <a href="http://www.novanet.no"><img src="novanet-logo.svg" class="logo"></a>
+                <h1>Arbeidsdager</h1>
+                <p>
+                    <ul class="pager" ng-cloak>
+                        <li><a class="btn" ng-click="vm.decreaseYear()">-</a></li>
+                        <li style="font-size:24px;vertical-align: middle;padding-left:10px;padding-right:10px;">{{vm.selectedYear}}</li>
+                        <li><a class="btn" ng-click="vm.increaseYear()">+</a></li>
+                    </ul>                    
+                    <ul class="nav nav-pills" ng-cloak>
+                        <li role="presentation" ng-repeat="month in vm.months">
+                            {{month.name}}<br>
+                            <span class="badge" ng-cloak>{{month.numberOfWorkingDays}}</span> 
+                        </li>
+                    </ul>    
+                    <br />                          
+                    <br />
+                    <div class="row" style="margin:auto;width:90%;">
+                        <div class="col-lg-4">
+                            <ul style="text-align:left;list-style-type:none;" ng-cloak><strong>I dag:</strong>
+                                <li>{{vm.today | date:'dd.MM.yyyy'}}</li>                                
+                            </ul> 
+                            <ul style="text-align:left;list-style-type:none;" ng-cloak><strong>Ukenummer:</strong>
+                                <li>{{vm.week}}</li>                                
+                            </ul> 
+							<ul style="text-align:left;list-style-type:none;" ng-if="vm.totalNumberOfWorkingDaysInYear" ng-cloak><strong>Totalt antall arbeidsdager</strong>
+                                <li>{{vm.totalNumberOfWorkingDaysInYear}}</li>
+                            </ul>							
+                        </div>
+                        <div class="col-lg-4">
+                            <ul style="text-align:left;list-style-type:none;" ng-cloak><strong>Helligdager i {{vm.selectedYear}}:</strong>
+                                <li ng-repeat="h in vm.holidays | orderBy:'date'">{{h.date | date:'dd.MM'}} - {{h.name}}</li>
+                            </ul>     
+                        </div>
+                        <div class="col-lg-4">
+                            <ul style="text-align:left;list-style-type:none;" ng-if="vm.summerTime" ng-cloak><strong>Sommertid starter</strong>
+                                <li>{{vm.summerTime.start | date:'dd.MM'}} - kl.02:00</li>
+                            </ul>
+                            <ul style="text-align:left;list-style-type:none;" ng-cloak><strong>Sommertid slutter</strong>
+                                <li>{{vm.summerTime.end | date:'dd.MM'}} - kl.03:00</li>
+                            </ul>
+                            <ul style="text-align:left;list-style-type:none;" ng-cloak><strong>Andre spesielle dager i {{vm.selectedYear}}:</strong>
+                                <li ng-repeat="s in vm.specialDays | orderBy:'date'">{{s.date | date:'dd.MM'}} - {{s.name}}</li>
+                            </ul>  
+                        </div>            
+                    </div>                  
+                </p>   
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.11.1/lodash.min.js"></script>
+<script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+<script type="text/javascript" src="module.js"></script>
+<script type="text/javascript" src="controller.js"></script>
+<script type="text/javascript" src="holiday.service.js"></script>
