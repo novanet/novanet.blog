@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "QueueName": "<queue_name>",
+    "ServiceBusConnection_fullyQualifiedNamespace": "<connection_name>.windows.net"
+  }
+}
