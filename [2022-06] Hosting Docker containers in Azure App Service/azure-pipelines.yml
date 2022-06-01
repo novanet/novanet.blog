@@ -1,0 +1,36 @@
+trigger:
+  - main
+
+pr: none
+
+resources:
+- repo: self
+
+variables:
+  - name: tag
+    value: '$(Build.BuildId)'
+  - name: image_name
+    value: '$(docker_registry)/'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - checkout: self
+      persistCredentials: "true"
+
+    - task: Bash@3
+      displayName: "Build, test and push docker image"
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker login $(docker_registry) --username $(docker_username) --password $(docker_password)
+          # build and push docker image
+          docker build . -t '$(image_name):$(tag)' -t '$(image_name):latest'
+          docker push '$(image_name):$(tag)'
+          docker push '$(image_name):latest'

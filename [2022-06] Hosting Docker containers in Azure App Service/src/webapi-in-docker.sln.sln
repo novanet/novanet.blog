@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi-in-docker-app-service", "Api\webapi-in-docker-app-service.csproj", "{46C8C0F2-6C91-4ECC-A8AA-ADF3A05D2AB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{64C65298-94E8-4F2F-8521-DB8BF3C193DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi-in-docker-service", "Service\webapi-in-docker-service\webapi-in-docker-service.csproj", "{E1F40E63-0331-42D1-8A85-AC314D3543D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46C8C0F2-6C91-4ECC-A8AA-ADF3A05D2AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C8C0F2-6C91-4ECC-A8AA-ADF3A05D2AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C8C0F2-6C91-4ECC-A8AA-ADF3A05D2AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C8C0F2-6C91-4ECC-A8AA-ADF3A05D2AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F40E63-0331-42D1-8A85-AC314D3543D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F40E63-0331-42D1-8A85-AC314D3543D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F40E63-0331-42D1-8A85-AC314D3543D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F40E63-0331-42D1-8A85-AC314D3543D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1F40E63-0331-42D1-8A85-AC314D3543D0} = {64C65298-94E8-4F2F-8521-DB8BF3C193DF}
+	EndGlobalSection
+EndGlobal
