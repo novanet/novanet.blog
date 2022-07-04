@@ -4,7 +4,7 @@
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
     "QueueName": "<queue_name>",
-    "ServiceBusConnection_fullyQualifiedNamespace": "<connection_name>.windows.net",
+    "ServiceBusConnection__fullyQualifiedNamespace": "<connection_name>.windows.net",
     "AZURE_CLIENT_ID": "<user_managed_identity_client_id>"
   }
 }
