@@ -2,6 +2,8 @@
 
 namespace WeatherForecast.Domain;
 
+// Important! Members of the domain class should always have private setters.
+
 public class WeatherForecast
 {
     public WeatherForecastId Id { get; private init; } = null!;
@@ -19,4 +21,8 @@ public class WeatherForecast
         Temperature = temperature;
         Summary = summary;
     }
+
+    public void ChangeTemperature(Temperature temperature) => Temperature = temperature;
+
+    public void Update(Summary? summary) => Summary = summary;    
 }
