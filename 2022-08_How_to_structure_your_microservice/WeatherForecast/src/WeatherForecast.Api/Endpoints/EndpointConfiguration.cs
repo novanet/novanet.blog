@@ -4,7 +4,7 @@ namespace WeatherForecast.Api;
 
 public static class EndpointConfiguration
 {
-    public static void RegisterApiEndpoints(this WebApplication app)
+    public static void RegisterEndpoints(this WebApplication app)
     {
         app.MapGet("/weatherforecast", GetWeatherForecastEndpoint.Execute);
     }

@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.RegisterApiEndpoints();
+app.RegisterEndpoints();
 app.MapHealthChecks("/healthz");
 app.MapGet("/", () => string.Empty);
 
