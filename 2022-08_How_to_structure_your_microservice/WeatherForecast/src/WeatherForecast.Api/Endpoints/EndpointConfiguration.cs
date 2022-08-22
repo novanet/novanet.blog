@@ -1,0 +1,11 @@
+﻿using WeatherForecast.Api.Endpoints.GetWeatherForecast;
+
+namespace WeatherForecast.Api;
+
+public static class EndpointConfiguration
+{
+    public static void RegisterApiEndpoints(this WebApplication app)
+    {
+        app.MapGet("/weatherforecast", GetWeatherForecastEndpoint.Execute);
+    }
+}
