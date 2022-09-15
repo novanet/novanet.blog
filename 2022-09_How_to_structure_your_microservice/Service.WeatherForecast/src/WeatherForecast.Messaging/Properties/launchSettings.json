@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "WeatherForecast.Messaging": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7058",
+      "launchBrowser": false
+    }
+  }
+}
