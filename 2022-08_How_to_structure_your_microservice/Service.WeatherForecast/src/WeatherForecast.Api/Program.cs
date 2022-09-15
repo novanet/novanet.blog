@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Api;
 using WeatherForecast.Database;
 using WeatherForecast.Features.GetWeatherForecast;
+using WeatherForecast.Features.UpdateWeatherForecast;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>((DbContextOptionsBuilder options) =>
 
 // Register features
 builder.Services.AddScoped<GetWeatherForecastFeature>();
+builder.Services.AddScoped<UpdateWeatherForecastFeature>();
 
 var app = builder.Build();
 

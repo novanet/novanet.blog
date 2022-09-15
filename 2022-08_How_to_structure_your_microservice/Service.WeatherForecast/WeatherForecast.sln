@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{949BAF6C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{5D9F7AC7-9A23-4B18-8B8C-77DEDAD21998}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Messaging", "src\WeatherForecast.Messaging\WeatherForecast.Messaging.csproj", "{007188EB-C77A-479F-A6D0-2575BF3E83D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Messaging", "src\WeatherForecast.Messaging\WeatherForecast.Messaging.csproj", "{007188EB-C77A-479F-A6D0-2575BF3E83D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Api.Contracts", "src\WeatherForecast.Api.Contracts\WeatherForecast.Api.Contracts.csproj", "{7449E8A0-0F93-4E88-B6B3-D17E4BF73E6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Api.Contracts", "src\WeatherForecast.Api.Contracts\WeatherForecast.Api.Contracts.csproj", "{7449E8A0-0F93-4E88-B6B3-D17E4BF73E6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Tests", "tests\WeatherForecast.Tests\WeatherForecast.Tests.csproj", "{A75B3E3E-FA42-440D-AB1A-8483C5BD375F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Tests", "tests\WeatherForecast.Tests\WeatherForecast.Tests.csproj", "{A75B3E3E-FA42-440D-AB1A-8483C5BD375F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +49,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7449E8A0-0F93-4E88-B6B3-D17E4BF73E6A} = {5D9F7AC7-9A23-4B18-8B8C-77DEDAD21998}
+		{A75B3E3E-FA42-440D-AB1A-8483C5BD375F} = {949BAF6C-9144-4574-99F3-D0868CFEFB2E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {367A6BC7-C898-4916-A958-4CD59D790839}
