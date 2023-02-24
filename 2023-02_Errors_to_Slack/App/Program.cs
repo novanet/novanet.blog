@@ -12,10 +12,4 @@ app.MapGet("/", () =>
         "This text should appear in Slack!");
 });
 
-app.MapGet("/error", () =>
-{
-    throw new NotImplementedException(
-       "This is another text!");
-});
-
 app.Run();
