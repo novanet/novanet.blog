@@ -1,0 +1,23 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+
+# VisualStudio
+.vs
+.vscode
+
+# User-specific files
+*.suo
+*.user
+
+# Tools
+tools/
+
+# nCrunch
+*.ncrunch*
+.*crunch*.local.xml
+_NCrunch*
+
+.fake
+.ionide

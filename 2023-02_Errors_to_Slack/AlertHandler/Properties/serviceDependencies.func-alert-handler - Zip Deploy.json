@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/rghallsteinblogfuncad62",
+      "type": "storage.azure",
+      "connectionId": "AzureWebJobsStorage"
+    },
+    "appInsights1": {
+      "ignored": "true",
+      "type": "appInsights"
+    }
+  }
+}
