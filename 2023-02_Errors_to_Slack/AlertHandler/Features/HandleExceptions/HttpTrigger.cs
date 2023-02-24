@@ -35,6 +35,7 @@ namespace AlertHandler.Features.HandleExceptions
 
         private static string BuildText(LogAlert alert)
         {
+            // Adding an emoji because I can, and to give some life to the alert
             return $":no_entry: *app*: <{alert!.LinkToSearchResults()}|{alert!.ExceptionMessage()}>";
         }
     }
