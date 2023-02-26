@@ -11,7 +11,7 @@ on:
 env:
   alertOriginName: app-alertorigin
   alertHandlerName: func-alerthandler
-  location: westeurope
+  location: norwayeast
   resourceGroupName: novanet-rg-alerts
   workingDirectory: './2023-02_Errors_to_Slack'
 
