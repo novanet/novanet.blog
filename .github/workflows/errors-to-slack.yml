@@ -1,0 +1,102 @@
+name: 'SendErrorsToSlack'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '2023-02_Errors_to_Slack/**'      
+
+env:
+  alertOriginName: app-alertorigin
+  alertHandlerName: func-alerthandler
+  location: norwayeast
+  resourceGroupName: rg-alerts
+  workingDirectory: './2023-02_Errors_to_Slack'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@master
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '7.0.x'
+    
+    - name: Restore
+      run: dotnet restore
+      working-directory: ${{ env.workingDirectory }}
+    
+    - name: Build
+      run: dotnet build -c Release --nologo --no-restore
+      working-directory: ${{ env.workingDirectory }}    
+    
+    - name: Publish
+      run: dotnet publish -c Release -o ./artifacts --self-contained false --nologo --no-restore --no-build
+      working-directory: ${{ env.workingDirectory }}
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Artifacts
+        path: ${{ env.workingDirectory }}/artifacts
+        if-no-files-found: error
+        retention-days: 1
+        
+  provisioning:
+    name: Create Azure resources
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@main
+    
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Create resource group  
+      uses: azure/cli@1.0.4
+      with:
+         inlineScript: az group create -n ${{ env.resourceGroupName }} -l ${{ env.location }}    
+    
+    - name: Deploy Bicep file
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ env.resourceGroupName }}
+        template: ${{ env.workingDirectory }}/scripts/main.bicep
+        parameters: alertOriginName=${{ env.alertOriginName }} alertHandlerName=${{ env.alertHandlerName }}
+
+  deploy:
+    name: Deploy
+    needs: provisioning
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: Artifacts
+    
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}  
+    
+    - name: 'Deploy app AlertOrigin'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.alertOriginName }}
+        package: '.'        
+
+    - name: Deploy func AlertHandler
+      uses: azure/functions-action@v1
+      with:
+        app-name: ${{ env.alertHandlerName }}
+        package:  '.'        
