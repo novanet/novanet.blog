@@ -40,7 +40,7 @@ resource alert 'Microsoft.Insights/scheduledQueryRules@2021-08-01' = {
     criteria: {
       allOf: [
         {
-          query: 'exceptions | where timestamp > ago(5min) | where severityLevel >= 3 | project cloud_RoleName, type, outerMessage | summarize RowCount=count() by cloud_RoleName, type, outerMessage | project RowCount, cloud_RoleName, type, outerMessage | order by RowCount desc'
+          query: 'exceptions | where timestamp > ago(5min) | where severityLevel >= 3 | project cloud_RoleName, type, outerMessage | summarize ErrorCount=count() by cloud_RoleName, type, outerMessage | project ErrorCount, cloud_RoleName, type, outerMessage | order by ErrorCount desc'
           threshold: 1
           operator: 'GreaterThanOrEqual'
           timeAggregation: 'Count'
