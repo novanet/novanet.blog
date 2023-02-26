@@ -4,15 +4,15 @@ param appiInstrumentationKey string
 
 resource planAlertOrigin 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: 'plan-alertorigin'
-  location: location
-  properties: {
-    reserved: true
-  }
+  location: location  
+  kind: 'linux'
   sku: {
-    name: 'B1'
+    name: 'B2'
     tier: 'Basic'
   }
-  kind: 'linux'
+  properties: {    
+    reserved: true
+  }
 }
 
 resource appAlertOrigin 'Microsoft.Web/sites@2022-03-01' = {

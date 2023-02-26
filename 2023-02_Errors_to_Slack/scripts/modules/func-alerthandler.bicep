@@ -5,14 +5,14 @@ param appiInstrumentationKey string
 resource planAlertHandler 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: 'plan-alerthandler'
   location: location
-  properties: {
-    reserved: true
-  }
+  kind: 'linux'  
   sku: {
     name: 'Y1'
     tier: 'Dynamic'
   }
-  kind: 'linux'
+  properties: {
+    reserved: true
+  }
 }
 
 resource stAlertHandler 'Microsoft.Storage/storageAccounts@2022-09-01' = {
