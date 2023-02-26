@@ -70,6 +70,13 @@ resource alert 'Microsoft.Insights/scheduledQueryRules@2021-08-01' = {
                 '*'
               ]
             }
+            {
+              name: 'RowCount'
+              operator: 'Include'
+              values: [
+                '*'
+              ]
+            }
           ]
         }
       ]
