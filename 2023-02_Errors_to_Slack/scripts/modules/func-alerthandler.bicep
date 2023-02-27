@@ -53,7 +53,7 @@ resource funcAlertHandler 'Microsoft.Web/sites@2022-03-01' = {
         }
         {
           name: 'SlackExceptionsWebHook'
-          value: '<The webhook you create for your Slack App>'
+          value: '<The webhook you create for your Slack App> -> /services/Txxxxxx/xxxxxxx/xxxxxxx'
         }
         {
           name: 'WEBSITE_RUN_FROM_PACKAGE'
