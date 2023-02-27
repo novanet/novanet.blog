@@ -11,16 +11,6 @@ module appi 'modules/appi.bicep' = {
   }
 }
 
-// App - AlertOrigin
-module alertOrigin 'modules/app-alertorigin.bicep' = {
-  name: 'AlertOrigin'
-  params: {
-   azureResourceName: alertOriginName
-   location: location
-   appiInstrumentationKey: appi.outputs.instrumentationKey
-  }
- }
-
 // Function - AlertHandler
 module alertHandler 'modules/func-alerthandler.bicep' = {
  name: 'AlertHandler'
@@ -30,6 +20,16 @@ module alertHandler 'modules/func-alerthandler.bicep' = {
   appiInstrumentationKey: appi.outputs.instrumentationKey
  }
 }
+
+// App - AlertOrigin
+module alertOrigin 'modules/app-alertorigin.bicep' = {
+  name: 'AlertOrigin'
+  params: {
+   azureResourceName: alertOriginName
+   location: location
+   appiInstrumentationKey: appi.outputs.instrumentationKey
+  }
+ }
 
 // Alert
 module alert 'modules/alert-exceptions.bicep' = {

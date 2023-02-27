@@ -23,6 +23,9 @@
         public static string? CloudRoleName(this LogAlert alert)
             => alert!.GetDimension("cloud_RoleName");
 
+        public static int GetErrorCount(this LogAlert alert)
+            => Convert.ToInt32(alert!.GetDimension("ErrorCount"));
+
         private static string? GetDimension(this LogAlert alert, string dimensionName)
             => alert!.data.alertContext.condition.allOf[0].dimensions.FirstOrDefault(x => x.name == dimensionName)?.value;
     }

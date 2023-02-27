@@ -12,7 +12,7 @@ env:
   alertOriginName: app-alertorigin
   alertHandlerName: func-alerthandler
   location: norwayeast
-  resourceGroupName: rg-alerts
+  resourceGroupName: novanet-rg-alerts
   workingDirectory: './2023-02_Errors_to_Slack'
 
 jobs:
@@ -93,10 +93,11 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.alertOriginName }}
-        package: '.'        
+        package: '.' 
+        startup-command: 'dotnet AlertOrigin.dll'
 
     - name: Deploy func AlertHandler
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.alertHandlerName }}
-        package:  '.'        
+        package:  '.'

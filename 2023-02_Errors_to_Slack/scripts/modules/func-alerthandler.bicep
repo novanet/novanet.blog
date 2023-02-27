@@ -2,19 +2,21 @@ param azureResourceName string
 param location string
 param appiInstrumentationKey string
 
+// App service plan -> Consumption plan, linux
 resource planAlertHandler 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: 'plan-alerthandler'
   location: location
-  properties: {
-    reserved: true
-  }
+  kind: 'linux'  
   sku: {
     name: 'Y1'
     tier: 'Dynamic'
   }
-  kind: 'linux'
+  properties: {
+    reserved: true
+  }
 }
 
+// A function needs a storage
 resource stAlertHandler 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: uniqueString(resourceGroup().id)
   location: location
@@ -24,6 +26,7 @@ resource stAlertHandler 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   }
 }
 
+// Azure Function
 resource funcAlertHandler 'Microsoft.Web/sites@2022-03-01' = {
   name: azureResourceName
   location: location
@@ -53,7 +56,7 @@ resource funcAlertHandler 'Microsoft.Web/sites@2022-03-01' = {
         }
         {
           name: 'SlackExceptionsWebHook'
-          value: '<The webhook you create for your Slack App>'
+          value: '<The webhook you create for your Slack App> -> /services/Txxxxxx/xxxxxxx/xxxxxxx'
         }
         {
           name: 'WEBSITE_RUN_FROM_PACKAGE'

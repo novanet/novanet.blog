@@ -12,4 +12,10 @@ app.MapGet("/", () =>
         "This text should appear in Slack!");
 });
 
+app.MapGet("/error", () =>
+{
+    throw new Exception(
+        "This is another text.");
+});
+
 app.Run();
