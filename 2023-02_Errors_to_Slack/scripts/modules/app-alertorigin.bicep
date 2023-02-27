@@ -2,6 +2,7 @@ param azureResourceName string
 param location string
 param appiInstrumentationKey string
 
+// App service plan
 resource planAlertOrigin 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: 'plan-alertorigin'
   location: location  
@@ -15,6 +16,7 @@ resource planAlertOrigin 'Microsoft.Web/serverfarms@2022-03-01' = {
   }
 }
 
+// App
 resource appAlertOrigin 'Microsoft.Web/sites@2022-03-01' = {
   name: azureResourceName
   location: location 

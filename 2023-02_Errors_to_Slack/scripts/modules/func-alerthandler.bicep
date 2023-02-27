@@ -2,6 +2,7 @@ param azureResourceName string
 param location string
 param appiInstrumentationKey string
 
+// App service plan -> Consumption plan, linux
 resource planAlertHandler 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: 'plan-alerthandler'
   location: location
@@ -15,6 +16,7 @@ resource planAlertHandler 'Microsoft.Web/serverfarms@2022-03-01' = {
   }
 }
 
+// A function needs a storage
 resource stAlertHandler 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: uniqueString(resourceGroup().id)
   location: location
@@ -24,6 +26,7 @@ resource stAlertHandler 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   }
 }
 
+// Azure Function
 resource funcAlertHandler 'Microsoft.Web/sites@2022-03-01' = {
   name: azureResourceName
   location: location

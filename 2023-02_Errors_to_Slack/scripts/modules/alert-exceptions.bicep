@@ -5,6 +5,7 @@ param functionDefaultHostName string
 
 var functionApiKey = listkeys('${functionId}/host/default', '2016-08-01').functionKeys.default
 
+// Action group which uses a web hook (the AlertHandler)
 resource ag 'Microsoft.Insights/actionGroups@2022-06-01' = {
   name: 'agExceptions'
   location: 'global' // Action groups are always global
@@ -21,6 +22,7 @@ resource ag 'Microsoft.Insights/actionGroups@2022-06-01' = {
   }
 }
 
+// The Alert with the KQL query, dimensions to include and frequency
 resource alert 'Microsoft.Insights/scheduledQueryRules@2021-08-01' = {
   name: 'exceptions'
   location: location
