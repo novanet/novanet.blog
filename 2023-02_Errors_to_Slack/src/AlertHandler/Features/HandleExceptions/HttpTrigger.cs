@@ -36,7 +36,7 @@ namespace AlertHandler.Features.HandleExceptions
         private static string BuildText(LogAlert alert)
         {
             // Adding an emoji because I can, and to give some life to the alert
-            return $":boom: *app*: New errors ({alert!.GetErrorCount()}):\t" + $"<{alert!.LinkToSearchResults()}|{alert!.ExceptionMessage()}>";
+            return $":boom: New errors ({alert!.GetErrorCount()}):".PadRight(22, ' ') + $"<{alert!.LinkToSearchResults()}|{alert!.ExceptionMessage()}>";
         }
     }
 }
